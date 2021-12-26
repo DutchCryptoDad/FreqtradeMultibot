@@ -1,0 +1,19 @@
+[Unit]
+Description=Freqtrade bot B
+
+[Service]
+WorkingDirectory=/opt/freqtrade
+ExecStart=/opt/freqtrade/.env/bin/freqtrade trade --config /opt/freqtrade/user_data/config_b.json
+Restart=always
+RestartSec=10
+Type=notify
+NotifyAccess=all
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=freqtrade_b
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
